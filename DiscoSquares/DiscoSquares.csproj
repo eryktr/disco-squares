@@ -56,9 +56,11 @@
     </ApplicationDefinition>
     <Compile Include="ChangeColorMode.cs" />
     <Compile Include="DiscoSquare.cs" />
+    <Compile Include="GridCreator.cs" />
     <Compile Include="Simulation.xaml.cs">
       <DependentUpon>Simulation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utility.cs" />
     <Compile Include="Validator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
