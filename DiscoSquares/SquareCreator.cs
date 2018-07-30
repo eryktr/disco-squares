@@ -34,5 +34,13 @@ namespace DiscoSquares
 
             return squares;
         }
+
+        public void StartThreads(DiscoSquare[,] squares)
+        {
+            foreach (var square in squares)
+            {
+                square.RunThread();
+            }
+        }
     }
 }

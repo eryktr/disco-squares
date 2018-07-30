@@ -26,8 +26,6 @@ namespace DiscoSquares
         public readonly int _rows, _columns;
         private readonly int _probablity;
         private readonly int _delay;
-        private readonly int _width;
-        private readonly int _height;
         private DiscoSquare[,] _squares;
         private readonly GridCreator _gridCreator;
         private readonly SquareCreator _squareCreator;
@@ -38,16 +36,19 @@ namespace DiscoSquares
 
         public Simulation(int rows, int columns, int delay, int probablity)
         {
+            
             _instance = this;
             _rows = rows;
             _columns = columns;
-            _gridCreator = new GridCreator();
-            _squareCreator = new SquareCreator(_rows, _columns);
             _delay = delay;
             _probablity = probablity;
+            _gridCreator = new GridCreator();
+            _squareCreator = new SquareCreator(_rows, _columns);
             _squares = _squareCreator.GetSquares();
-            
+            _squareCreator.StartThreads(_squares);
             _mainGrid = _gridCreator.CreateGrid(_rows, _columns, _squares);
+
+
             this.Content = _mainGrid;
             this.Title = "Threading Disco Squares Simulation"; // This one works
             this.SizeToContent = SizeToContent.WidthAndHeight;
@@ -68,10 +69,14 @@ namespace DiscoSquares
         {
             if (row >= _instance._rows) row = row % _instance._rows;
             if (col >= _instance._columns) col = col % _instance._columns;
-            if (row < 0) row = row % _instance._rows + row;
-            if (col < 0) col = col % _instance._columns + col;
+            if (row < 0) row = row % _instance._rows + _instance._rows;
+            if (col < 0) col = col % _instance._columns + _instance._columns;
             return _instance._squares[row, col];
-            
+        }
+
+        public int GetDelay()
+        {
+            return _delay;
         }
     }
 }

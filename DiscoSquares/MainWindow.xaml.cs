@@ -38,8 +38,8 @@ namespace DiscoSquares
                 var delay = int.Parse(DelayTextBox.Text);
                 try
                 {
-                    _validator.ValidateData(rows, cols, probability, delay);
-                    var sim = new Simulation(rows, cols, probability, delay);
+                    _validator.ValidateData(rows, cols, delay, probability);
+                    var sim = new Simulation(rows, cols, delay, probability);
                     sim.Show();
                 }
                 catch (FormatException ex)
