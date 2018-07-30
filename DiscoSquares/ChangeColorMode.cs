@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiscoSquares
 {
-    enum ChangeColorMode
+    public enum ChangeColorMode
     {
         AverageColor,
         RandomColor

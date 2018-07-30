@@ -20,5 +20,10 @@ namespace DiscoSquares
             return color;
             
         }
+
+        public static int GetRandomNumber()
+        {
+            return r.Next(0, 100);
+        }
     }
 }
